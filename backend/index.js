@@ -5,6 +5,7 @@ const path = require('path');
 
 //Inicializaciones
 const app = express();
+require('./database');
 
 //Configuraciones
 app.set('port', 3002);
@@ -16,10 +17,16 @@ const storage = multer.diskStorage({
     filename(req, file, cb) {
         cb(null, new Date().getTime() + path.extname(file.originalname));
     }
-});
+})
 app.use(multer({storage}).single('image'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+
+//Rutas
+app.use('/api/diario', require('./routes/notas'));
+
+// Documentos estaticos
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Iniciando el servidor
 app.listen(app.get('port'), () => {
