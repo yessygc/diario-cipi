@@ -1,10 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const NotaSchema = new Schema({
-    _id: Schema.Types.ObjectId(),
+    isbn: { type: String, required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
-    imagePath: { type: String, required: true },
+    imagePath: { type: String },
     text: { type: String, required: true },
     author: { type: String, required: false },
     create_at: { type: Date, default: Date.now },

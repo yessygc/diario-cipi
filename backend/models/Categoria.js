@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
 const CategoriaSchema = new Schema({
-    _id: Schema.Types.ObjectId,
+    _id: Mongoose.Schema.ObjectId,
+    name: { type: String, required: true },
 });
 
-module.exports = model('Categoria', CategiriaSchema);
+module.exports = model('Categoria', CategoriaSchema);
 
 
 // {}
