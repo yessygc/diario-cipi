@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const morgan = require('morgan');
 const multer = require('multer');
@@ -8,7 +12,7 @@ const app = express();
 require('./database');
 
 //Configuraciones
-app.set('port', 3002);
+app.set('port', process.env.PORT || 3002);
 
 //Middlewares
 app.use(morgan('dev'));
@@ -33,4 +37,4 @@ app.listen(app.get('port'), () => {
     console.log('Server on port', app.get('port'));
 });
 
-// {}
+// {} [] ||
