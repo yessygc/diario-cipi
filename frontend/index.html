@@ -1,14 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diario Online</title>
+    <title>Diario Online Juvenil</title>
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- ANIMATE CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
-<body>
 
-    <h1>Hello world</h1>
-    
+<body onload="startTime()">
+
+    <nav class="navbar navbar-expand-lg" style="background-color: #fff;">
+        <div class="container-fluid">
+            <div class="row aling-items-right">
+                <div class="clockdate">
+                    <span id="time"></span>
+                    <span id="date"></span>
+                </div>
+
+                <!-- HORA & FECHA-->
+                <script>
+                    function startTime() {
+                        var today = new Date(), hours = today.getHours(), minutes = today.getMinutes(),
+                            date = today.getDate(), day = today.getDay(), month = today.getMonth();
+
+                        hours = (hours == 0) ? 12 : hours;
+                        hours = (hours > 12) ? hours - 12 : hours;
+
+                        hours = checkTime(hours);
+                        minutes = checkTime(minutes);
+
+                        var dia = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"],
+                            mes = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+
+                        var hr = document.getElementById('time').innerHTML = hours + ":" + minutes,
+                            dt = document.getElementById('date').innerHTML = dia[day] + ", " + date + " De " + mes[month];
+
+                        var time = setTimeout(function () { startTime(); }, 500);
+                    }
+
+                    function checkTime(e) {
+                        if (e < 10) {
+                            e = "0" + e;
+                        }
+                        return e;
+                    }
+                </script>
+            </div>
+    </nav>
+
+    <div class="row">
+        <h1 class="text-center">
+            Diario Online Juvenil
+        </h1>
+    </div>
+
+    <nav class="navbar navbar-expand-lg" style="background-color: #fff;">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Internacional</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nacional</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tlaxcala</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nativitas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Deportes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Actualidad</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    </div>
+
+
+
 </body>
+
 </html>

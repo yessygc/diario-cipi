@@ -11,6 +11,7 @@ module.exports = {
         path: path.join(__dirname, 'backend/public'),
         filename: 'js/bundle.js'
     },
+    mode: 'development',
 
     module: {
         rules: [
@@ -29,6 +30,7 @@ module.exports = {
             template: './frontend/index.html',
             minify: {
                 collapseWhitespace: true,
+                removeComments: true,  
                 removeRedundantAttributes: true,
                 removeScriptTypeAttributes: true,
                 removeStyleLinkTypeAttributes: true,
